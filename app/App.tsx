@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView, StyleSheet } from "react-native";
+import { useBLE } from "./src/hooks/useBLE";
+import { SwitcherControl } from "./src/components/SwitcherControl";
 
 export default function App() {
+  const {
+    isConnected,
+    isConnecting,
+    isScanning,
+    error,
+    deviceName,
+    connect,
+    disconnect,
+    turnOn,
+    turnOff,
+    toggle,
+  } = useBLE();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <SwitcherControl
+        isConnected={isConnected}
+        isConnecting={isConnecting}
+        isScanning={isScanning}
+        error={error}
+        deviceName={deviceName}
+        onConnect={connect}
+        onDisconnect={disconnect}
+        onTurnOn={turnOn}
+        onTurnOff={turnOff}
+        onToggle={toggle}
+      />
+      <StatusBar style="light" />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#1a1a2e",
   },
 });
