@@ -2,13 +2,9 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://121.167.126.66:8080";
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY || "";
-
 async function api(path: string, method: "GET" | "POST" = "POST") {
-  const res = await fetch(`${API_URL}${path}`, {
+  const res = await fetch(`/api/proxy?path=${encodeURIComponent(path)}`, {
     method,
-    headers: { Authorization: `Bearer ${API_KEY}` },
   });
   return res.json();
 }
