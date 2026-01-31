@@ -1,0 +1,14 @@
+[Unit]
+Description=Switcher BLE API Server
+After=network.target bluetooth.target
+
+[Service]
+Type=simple
+User=cloto
+WorkingDirectory=/home/cloto/switcher
+ExecStart=/usr/bin/python3 server.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
