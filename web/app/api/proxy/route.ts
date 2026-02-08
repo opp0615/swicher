@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const API_URL = process.env.API_URL || "http://121.167.126.66:8080";
+const API_URL = process.env.API_URL || "http://123.108.182.65:8080";
 const API_KEY = process.env.API_KEY || "";
 
 export async function GET(req: NextRequest) {
